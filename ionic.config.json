@@ -1,0 +1,7 @@
+{
+  "name": "KaiserApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue"
+}
