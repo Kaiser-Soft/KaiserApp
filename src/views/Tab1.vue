@@ -5,9 +5,6 @@
         <ion-title>Mapa</ion-title>
 
         <div>
-          <client-only>
-            <l-map ref="mapita"></l-map>
-          </client-only>
         </div>
 
         <div id="mapid"></div>
@@ -20,6 +17,8 @@
         </ion-toolbar>
       </ion-header>
     </ion-content>
+    <MapaKaiser/>
+    
   </ion-page>
 </template>
 
@@ -32,9 +31,10 @@ import {
   IonTitle,
   IonContent,
 } from "@ionic/vue";
+import MapaKaiser from "@/components/MapaKaiser.vue";
 export default {
-  name: "Mapa",
-  components: { IonHeader, IonToolbar, IonTitle, IonContent, IonPage },
+  name: "Tab1",
+  components: { IonHeader, IonToolbar, IonTitle, IonContent, IonPage, MapaKaiser },
   data() {
     return {};
   },

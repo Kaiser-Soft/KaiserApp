@@ -23,16 +23,17 @@
 
 <script lang="ts">
 import { IonTabBar, IonTabButton, IonTabs, IonLabel, IonIcon, IonPage } from '@ionic/vue';
-// import { ellipse, map, send, square, logOut, triangle } from 'ionicons/icons';
+import {map, send, logOut } from 'ionicons/icons';
+// import MapaKaiser from "@/components/MapaKaiser.vue"
 
 export default {
   name: 'Tabs',
   components: { IonLabel, IonTabs, IonTabBar, IonTabButton, IonIcon, IonPage },
   setup() {
     return {
-    //   map, 
-    //   send, 
-    //   logOut,
+      map, 
+      send, 
+      logOut,
     }
   }
 }
