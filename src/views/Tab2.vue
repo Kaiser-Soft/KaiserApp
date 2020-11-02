@@ -41,7 +41,7 @@ import {
 // import ExploreContainer from '@/components/ExploreContainer.vue';
 
 export default {
-  name: "Reporte",
+  name: "Tab2",
   components: { IonHeader, IonToolbar, IonTitle, IonContent, IonPage },
 };
 </script>
