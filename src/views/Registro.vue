@@ -13,7 +13,8 @@
         </ion-toolbar>
       </ion-header>
       <div id="container">
-        <form action="" @click.prevent="login">
+        
+        <form action="" @submit.prevent="registro">
 
           <ion-card native>
               <ion-card-content>
@@ -22,8 +23,8 @@
                       <img src="https://raw.githubusercontent.com/https-github-com-Kbra/Kaiser/master/icon.png" alt="">
                   </ion-avatar>
                 </div>
-              <ion-title>Iniciar Sesión</ion-title>
-              <ion-label>Hola es bueno verte de nuevo</ion-label>
+              <ion-title>Registro</ion-title>
+              <ion-label>Hola!</ion-label>
                 <ion-item>
                     <ion-label position="floating">E-Mail<ion-text color="danger">*</ion-text></ion-label>
                     <ion-input required formControlName="email" type="text" v-model="email"></ion-input>
@@ -31,18 +32,21 @@
                 <ion-item>
                     <ion-label position="floating">Contraseña<ion-text color="danger">*</ion-text></ion-label>
                     <ion-input required formControlName="email" type="password" v-model="password"></ion-input>
+
                 </ion-item>
                 <ion-button type="sumbit">
-                      Iniciar
+                      Registrar
                 </ion-button>
                 <ion-button>
-                    <router-link to="/registro" style="color:white;">
-                        Registrar
+                    <router-link to="/" style="color:white;">
+                        Iniciar Sesión
                     </router-link>
                 </ion-button>
               </ion-card-content>
-              <div>{{error}}</div>
           </ion-card>
+          <div v-if="error">
+              {{error}}
+          </div>
         </form>
       </div>
       
@@ -66,8 +70,9 @@ import { defineComponent } from "vue";
 import firebase from "firebase";
 import '@/dbFirebase/init';
 
+
 export default defineComponent({
-  name: "Login",
+  name: "Registro",
   components: {
     IonContent,
     IonHeader,
@@ -78,20 +83,20 @@ export default defineComponent({
   },
   data(){
     return{
-      email:'',
-      password:'',
-      error:''
-
+        email:'',
+        password:'',
+        error:''
     };
   },
   methods:{
-    login(){
+      registro(){
           this.error=''
           if (this.email && this.password) {
-              firebase.auth().signInWithEmailAndPassword(this.email, this.password)
+              firebase.auth().createUserWithEmailAndPassword(this.email, this.password)
               .then(user=>{
-                  this.$router.push({name: 'Tabs'})
-                  user
+                  this.email=''
+                  this.password=''
+                  console.log(user)
               }).catch(err=>{
                   this.error= err.message
               })
@@ -99,7 +104,6 @@ export default defineComponent({
               this.error="falta algun campo"
           }
       }
-  
   }
 });
 

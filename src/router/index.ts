@@ -3,6 +3,8 @@ import { RouteRecordRaw } from 'vue-router';
 import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import Tabs from '../views/Tabs.vue'
+import Registro from '../views/Registro.vue'
+import firebase from 'firebase'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -20,12 +22,21 @@ const routes: Array<RouteRecordRaw> = [
     component: Login
   },
   {
+    path: '/registro',
+    name: 'Registro',
+    component: Registro
+  },
+  {
     path: '/tabs/',
+    name:"Tabs",
     component: Tabs,
+    meta:{
+      requiresAuth: true
+    },
     children: [
       {
         path: '',
-        redirect: 'tab1'
+        redirect: '/tabs/tab1'
       },
       {
         path: 'tab1',
@@ -47,5 +58,19 @@ const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
 })
-
+router.beforeEach((to, from, next )=>{
+  if (to.matched.some(ruta=> ruta.meta.requiresAuth)) {
+    const user= firebase.auth().currentUser;
+    if (user) {
+      next();
+    } else{
+      next({
+        name: 'Login'
+      }
+      )
+    }
+  }else{
+    next();
+  }
+})
 export default router
