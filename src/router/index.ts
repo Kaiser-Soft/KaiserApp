@@ -5,16 +5,22 @@ import Login from '../views/Login.vue'
 import Tabs from '../views/Tabs.vue'
 import Registro from '../views/Registro.vue'
 import firebase from 'firebase'
+import tab1 from '../views/Tab1.vue'
+import tab2 from '../views/Tab2.vue'
+// import tab3 from '../views/Tab3.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    redirect: '/login'
+    redirect: 'login'
   },
   {
     path: '/home',
     name: 'Home',
-    component: Home
+    component: Home,
+    meta:{
+      requiresAuth: true
+    }
   },
   {
     path: '/login',
@@ -33,25 +39,25 @@ const routes: Array<RouteRecordRaw> = [
     meta:{
       requiresAuth: true
     },
-    children: [
+    children:[
       {
-        path: '',
-        redirect: '/tabs/tab1'
+        path: '/tabs/tab1',
+        name:"tab1",
+        component: tab1
       },
       {
-        path: 'tab1',
-        component: () => import('@/views/Tab1.vue')
-      },
-      {
-        path: 'tab2',
-        component: () => import('@/views/Tab2.vue')
-      },
-      {
-        path: 'tab3',
-        component: () => import('@/views/Tab3.vue')
+        path: '/tabs/tab2',
+        name:"tab2",
+        component: tab2
       }
+      // ,
+      // {
+        // path: '/tabs/tab3',
+        // name:"tab3",
+        // component: tab3
+      // }
     ]
-  }
+  },
 ]
 
 const router = createRouter({
