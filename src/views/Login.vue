@@ -35,12 +35,12 @@
                 <ion-button type="sumbit">
                       Iniciar
                 </ion-button>
-                <ion-button>
-                    <router-link to="/registro" style="color:white;">
-                        Registrar
-                    </router-link>
-                </ion-button>
               </ion-card-content>
+                    <router-link to="Registro">
+                <ion-button>
+                        Registro
+                </ion-button>
+                    </router-link>
               <div>{{error}}</div>
           </ion-card>
         </form>
@@ -59,7 +59,12 @@ import {
   IonPage,
   IonTitle,
   IonToolbar,
-  IonInput
+  IonInput,
+  IonCard,
+  IonButton,
+  IonCardContent,
+  IonText,
+  IonItem
 } from "@ionic/vue";
 // import L from 'leaflet';
 import { defineComponent } from "vue";
@@ -67,14 +72,19 @@ import firebase from "firebase";
 import '@/dbFirebase/init';
 
 export default defineComponent({
-  name: "Login",
+  name: "login",
   components: {
     IonContent,
     IonHeader,
     IonPage,
     IonTitle,
     IonToolbar,
-    IonInput
+    IonInput,
+    IonCard,
+    IonButton,
+    IonCardContent,
+    IonText,
+    IonItem
   },
   data(){
     return{
@@ -90,7 +100,7 @@ export default defineComponent({
           if (this.email && this.password) {
               firebase.auth().signInWithEmailAndPassword(this.email, this.password)
               .then(user=>{
-                  this.$router.push({name: 'Tabs'})
+                  this.$router.push({name: 'Home'})
                   user
               }).catch(err=>{
                   this.error= err.message

@@ -11,8 +11,9 @@
           <ion-title size="large">Cerrar Sesion</ion-title>
         </ion-toolbar>
       </ion-header>
-
-      <ExploreContainer name="LogOutpage" />
+        <ion-button @click.prevent="logout">
+          Cerrar Sesión
+        </ion-button>      
     </ion-content>
   </ion-page>
 </template>
@@ -24,11 +25,32 @@ import {
   IonToolbar,
   IonTitle,
   IonContent,
+  IonButton
 } from "@ionic/vue";
+
+import { defineComponent } from "vue";
 // import ExploreContainer from '@/components/ExploreContainer.vue';
 
-export default {
+export default defineComponent({
   name: "Cerrar Sesion",
-  components: { IonHeader, IonToolbar, IonTitle, IonContent, IonPage },
-};
+  components: { IonHeader, IonToolbar, IonTitle, IonContent, IonPage, IonButton },
+  data(){
+    return{
+      user: null,
+      enlace: ''
+    }
+  },
+  methods:{
+    // ,
+    // created(){
+    //   firebase.auth().onAuthStateChanged(user=>{
+    //     if (user) {
+    //       this.user= user;
+    //     }else{
+    //       this.user = null
+    //     }
+    //   })
+    // }
+  }
+});
 </script>

@@ -12,9 +12,9 @@
           <ion-label>Reporte</ion-label>
         </ion-tab-button>
         
-        <ion-tab-button tab="Cerrar Sesion" href="/tabs/tab3">
+        <ion-tab-button tab="Cerrar Sesion" href="/home">
           <ion-icon :icon="logOut" />
-          <ion-label>Cerrar Sesion</ion-label>
+          <ion-label>Inicio</ion-label>
         </ion-tab-button>
       </ion-tab-bar>
     </ion-tabs>

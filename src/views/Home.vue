@@ -2,41 +2,44 @@
   <ion-page>
     <ion-header :translucent="true">
       <ion-toolbar>
-        <ion-title>Kaiser Mapa</ion-title>
+        <ion-title>Kaiser</ion-title>
       </ion-toolbar>
     </ion-header>
 
     <ion-content :fullscreen="true">
       <ion-header collapse="condense">
         <ion-toolbar>
-          <ion-title size="large">Kaiser Mapa</ion-title>
+          <ion-title size="large">Kaiser</ion-title>
         </ion-toolbar>
       </ion-header>
-      <div id="container">
 
+      <div id="container">
+        <ion-card native>
+          <ion-card-content>
+            <div style="display: flex; justify-content: center;">
+                  <ion-avatar>
+                      <img src="https://raw.githubusercontent.com/https-github-com-Kbra/Kaiser/master/icon.png" alt="">
+                  </ion-avatar>
+                </div>
+            <ion-title>Kaiser</ion-title>
+            <ion-label>Hola es bueno verte de nuevo</ion-label>
+             <ion-item>
+                    
+            </ion-item>
+            <ion-button>
+              <router-link
+                to="/tabs/tab1"
+                style="text-decoration: none; color: white"
+              >
+                ¡VAMOS!
+              </router-link>
+            </ion-button>
+            <ion-button @click.prevent="logout">Cerrar Sesión</ion-button>
+          </ion-card-content>
+        </ion-card>
       </div>
-     
     </ion-content>
-    <MapaKaiser/>
-  
-  
-    <!-- <ion-tabs>
-    <ion-tab-bar slot="bottom,top" vertical="bottom">
-      <ion-tab-button tab="tab1" v-on:click="MapaKaiser.mostrarMapa()">
-        <ion-icon name="map"></ion-icon>
-        <ion-label>Mapa</ion-label>
-      </ion-tab-button>
-      <ion-tab-button tab="HomeTow">
-        <ion-icon name="apps"></ion-icon>
-        <ion-label>Tab Two</ion-label>
-      </ion-tab-button>
-      <ion-tab-button tab="tab3">
-        <ion-icon name="send"></ion-icon>
-        <ion-label>Tab Three</ion-label>
-      </ion-tab-button>
-    </ion-tab-bar>
-  </ion-tabs> -->
-</ion-page>
+  </ion-page>
 </template>
 
 <script lang="ts">
@@ -45,12 +48,11 @@ import {
   IonHeader,
   IonPage,
   IonTitle,
-  IonToolbar
+  IonToolbar,
 } from "@ionic/vue";
 // import L from 'leaflet';
 import { defineComponent } from "vue";
-import MapaKaiser from "@/components/MapaKaiser.vue";
-
+import firebase from 'firebase';
 
 export default defineComponent({
   name: "Home",
@@ -60,18 +62,18 @@ export default defineComponent({
     IonPage,
     IonTitle,
     IonToolbar,
-    MapaKaiser
   },
-  data(){
-    return{
-
-    };
+  data() {
+    return {};
   },
-  methods:{
-
+  methods: {
+     logout(){
+      firebase.auth().signOut().then(()=>{
+        this.$router.push({name: 'Login'})
+      })
+    }
   }
 });
-
 </script>
 
 <style scoped>
