@@ -17,7 +17,8 @@
         </ion-toolbar>
       </ion-header>
     </ion-content>
-    <MapaKaiser/>
+    <!-- <MapaKaiser/> -->
+    <MapaMapBox/>
     
   </ion-page>
 </template>
@@ -31,10 +32,11 @@ import {
   IonTitle,
   IonContent,
 } from "@ionic/vue";
-import MapaKaiser from "@/components/MapaKaiser.vue";
+// import MapaKaiser from "@/components/MapaKaiser.vue";
+import MapaMapBox from "@/components/MapaMapBox.vue";
 export default {
   name: "Tab1",
-  components: { IonHeader, IonToolbar, IonTitle, IonContent, IonPage, MapaKaiser },
+  components: { IonHeader, IonToolbar, IonTitle, IonContent, IonPage, MapaMapBox },
   data() {
     return {};
   },

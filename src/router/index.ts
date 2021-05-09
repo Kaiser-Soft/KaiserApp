@@ -4,7 +4,7 @@ import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import Tabs from '../views/Tabs.vue'
 import Registro from '../views/Registro.vue'
-import firebase from 'firebase'
+// import firebase from 'firebase'
 import tab1 from '../views/Tab1.vue'
 import tab2 from '../views/Tab2.vue'
 // import tab3 from '../views/Tab3.vue'
@@ -64,19 +64,19 @@ const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
 })
-router.beforeEach((to, from, next )=>{
-  if (to.matched.some(ruta=> ruta.meta.requiresAuth)) {
-    const user= firebase.auth().currentUser;
-    if (user) {
-      next();
-    } else{
-      next({
-        name: 'Login'
-      }
-      )
-    }
-  }else{
-    next();
-  }
-})
+// router.beforeEach((to, from, next )=>{
+//   if (to.matched.some(ruta=> ruta.meta.requiresAuth)) {
+//     const user= firebase.auth().currentUser;
+//     if (user) {
+//       next();
+//     } else{
+//       next({
+//         name: 'Login'
+//       }
+//       )
+//     }
+//   }else{
+//     next();
+//   }
+// })
 export default router
